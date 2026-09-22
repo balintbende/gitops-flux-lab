@@ -20,7 +20,7 @@ spec:
     cleanupOnFail: false
   values:
     autoscaling:
-      enabled: false
+      enabled: true
       minReplicas: 1
       maxReplicas: 3
     default:
