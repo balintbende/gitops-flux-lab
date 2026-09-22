@@ -39,7 +39,7 @@ resource "azurerm_resource_group" "resource-group" {
 }
 
 module "network" {
-  source                    = "./terraform-azure-network"
+  source                    = "./azure-network"
   product                   = var.product
   environment               = var.environment
   azure_region              = var.azure_region
@@ -47,7 +47,7 @@ module "network" {
 }
 
 module "kubernetes" {
-  source                          = "./terraform-azure-kubernetes"
+  source                          = "./azure-kubernetes"
   product                         = var.product
   environment                     = var.environment
   azure_client_id                 = var.azure_client_id
@@ -67,7 +67,7 @@ resource "kubernetes_namespace_v1" "namespace" {
 }
 
 module "flux" {
-  source            = "./terraform-flux"
+  source            = "./flux"
   product           = var.product
   environment       = var.environment
   github_owner      = var.github_owner
@@ -78,7 +78,7 @@ module "flux" {
 }
 
 module "application" {
-  source      = "./terraform-azure-application"
+  source      = "./azure-application"
   product     = var.product
   environment = var.environment
 }

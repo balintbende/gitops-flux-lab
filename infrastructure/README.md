@@ -1,7 +1,6 @@
-# bimlens-terraform
+# infrastructure - terraform 
 
-The Terraform modules enable a cluster-as-a-service solution for the 
-**bimlens** project.
+The Terraform modules enable a cluster-as-a-service solution.
 
 ## Stack
 
