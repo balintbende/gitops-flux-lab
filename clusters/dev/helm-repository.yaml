@@ -1,0 +1,21 @@
+##
+## This is the repository configuration for the GitHub repo where the
+## helm-charts are located.
+##
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: bimlens-helm-repository-dev
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/balintbende/bimlens-helm-charts.git
+  ref:
+    branch: develop
+  secretRef:
+    name: flux-system
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/charts/

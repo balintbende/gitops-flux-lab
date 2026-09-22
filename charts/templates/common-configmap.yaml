@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bimlens-{{ .Release.Namespace }}-common-configmap
+data:
+
+  RELEASE: "bimlens-{{ .Release.Namespace }}"
+
+  HOST: {{ .Values.host.cloud | quote }}
+  CDN_HOST: {{ .Values.host.cdn | quote }}
+  API_HOST: {{ .Values.host.api | quote }}

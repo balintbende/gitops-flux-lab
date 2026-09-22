@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api.serviceName }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.api.serviceName }}
+    helm.sh/chart: {{ include "bimlens.chart" . }}
+    app.kubernetes.io/instance: {{ .Values.api.serviceName }}
+    app.kubernetes.io/managed-by: {{ .Values.api.serviceName }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.api.replicas }}
+  {{- end }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.api.serviceName }}
+      app.kubernetes.io/instance: {{ .Values.api.serviceName }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.api.serviceName }}
+        app.kubernetes.io/instance: {{ .Values.api.serviceName }}
+    spec:
+      nodeSelector:
+        node-group-profile: {{ .Values.api.nodeGroupProfile }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      containers:
+        - name: {{ .Values.api.serviceName }}
+          image: {{ .Values.api.image }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.api.port }}
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: bimlens-{{ .Release.Namespace }}-common-configmap
+            - configMapRef:
+                name: {{ .Values.api.serviceName }}-configmap
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: 8080
+            periodSeconds: 3
+            timeoutSeconds: 1
+          resources:
+            requests:
+              memory: {{ .Values.api.resources.requests.memory }}
+              cpu: {{ .Values.api.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.api.resources.limits.memory }}
+              cpu: {{ .Values.api.resources.limits.cpu }}

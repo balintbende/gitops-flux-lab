@@ -1,0 +1,79 @@
+# This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+
+imagePullSecrets: "acr-pull-credentials"
+
+image:
+  pullPolicy: "IfNotPresent"
+
+# Default configuration
+default:
+  namespace: ""
+  nodeGroupProfile: ""
+
+# Shared hosts, exposed to all services via the common configmap.
+# Override per environment from the HelmRelease.
+host:
+  cloud: ""
+  cdn: ""
+  api: ""
+
+# Api gateway
+api:
+  # The name of the service.
+  serviceName: "api"
+
+  # There is no default image defined
+  image: ""
+
+  # The number of replicas to be created.
+  replicas: 2
+
+  # This assumes the node groups of 'default' and 'high'
+  # to be configured in the cluster
+  nodeGroupProfile: "default"
+
+  # Resource limit for the pods
+  resources:
+    requests:
+      memory: "200Mi"
+      cpu: "10m"
+    limits:
+      memory: "500Mi"
+      cpu: "160m"
+
+  # The host of the api, for which the ingress will be created.
+  host: ""
+
+  # Container port
+  port: 3000
+
+# Web frontend
+web:
+  # The name of the service.
+  serviceName: "web"
+
+  # There is no default image defined
+  image: ""
+
+  # The number of replicas to be created.
+  replicas: 1
+
+  # This assumes the node groups of 'default' and 'high'
+  # to be configured in the cluster
+  nodeGroupProfile: "default"
+
+  # The host of the service, for which the ingress will be created.
+  host: ""
+
+  # Resource limit for the pods
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "20m"
+    limits:
+      memory: "500Mi"
+      cpu: "100m"
