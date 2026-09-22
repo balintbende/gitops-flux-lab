@@ -5,18 +5,18 @@ metadata:
   name: api-dev-image-repository
   namespace: flux-system
 spec:
-  image: ghcr.io/balintbende/bimlens-api
+  image: ghcr.io/balintbende/bimlens/api
   interval: 5m0s
   secretRef:
     name: ghcr-credentials
 ---
-# apiVersion: image.toolkit.fluxcd.io/v1
-# kind: ImageRepository
-# metadata:
-#   name: web-dev-image-repository
-#   namespace: flux-system
-# spec:
-#   image: bimlens.azurecr.io/web
-#   interval: 5m0s
-#   secretRef:
-#     name: acr-pull-credentials
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: web-dev-image-repository
+  namespace: flux-system
+spec:
+  image: ghcr.io/balintbende/bimlens/web
+  interval: 5m0s
+  secretRef:
+    name: ghcr-credentials
