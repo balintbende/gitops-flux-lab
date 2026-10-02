@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.15.6"
+  required_version = "1.16.1"
 
   required_providers {
     azurerm = {
@@ -67,14 +67,17 @@ resource "kubernetes_namespace_v1" "namespace" {
 }
 
 module "flux" {
-  source            = "./flux"
-  product           = var.product
-  environment       = var.environment
-  github_owner      = var.github_owner
-  github_token      = var.github_token
-  github_repository = var.github_repository
-  kube_config       = module.kubernetes.kube_config
-  ghcr_token        = var.ghcr_token
+  source       = "./flux"
+  product      = var.product
+  environment  = var.environment
+  github_owner = var.github_owner
+  # github_token      = var.github_token
+  github_repository          = var.github_repository
+  kube_config                = module.kubernetes.kube_config
+  ghcr_token                 = var.ghcr_token
+  github_app_id              = var.github_app_id
+  github_app_installation_id = var.github_app_installation_id
+  github_app_private_key     = var.github_app_private_key
 }
 
 module "application" {

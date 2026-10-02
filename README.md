@@ -27,49 +27,42 @@ Every configuration here is specific to a namespace.
 In the `clusters` folder, however, the configuration are valid for the whole cluster.
 Here is the configuration for common git/ECR repositories, flux-systems etc.
 
-[Further reading][1]
+[Repository structure][1]
 
 ## working with flux
 
-The initial flux setup is part of terraform.
+The initial flux setup and bootstrap is part of terraform.
 
 ## troubleshooting
 
 Get flux:
-
 ```
 $ brew install fluxcd/tap/flux
 ```
 
 **IMPORTANT: switch to the proper kube context!**
-
 ```
 $ kubectx bimlens-dev
 ```
 
 General status:
-
 ```
 $ flux get all
 ```
 
 Image automation status:
-
 ```
 $ flux get images all --all-namespaces
 ```
 
 Logs:
-
 ```
 $ flux logs --all-namespaces --follow --tail 50
 ```
 
 Reconcile flux system services:
-
 ```
 $ flux reconcile kustomization flux-system --with-source
 ```
-
 
 [1]: https://fluxcd.io/docs/guides/repository-structure/

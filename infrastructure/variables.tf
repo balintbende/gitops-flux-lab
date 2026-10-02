@@ -72,6 +72,22 @@ variable "github_token" {
   sensitive   = true
 }
 
+variable "github_app_id" {
+  description = "The app id of the GitHub App"
+  type        = string
+}
+
+variable "github_app_installation_id" {
+  description = "The installation id of the GitHub App"
+  type        = string
+}
+
+variable "github_app_private_key" {
+  description = "The private key of the GitHub App."
+  type        = string
+  sensitive   = true
+}
+
 variable "ghcr_token" {
   description = "GitHub classic PAT with read:packages scope (used when ghcr_credentials_enabled = true)"
   type        = string

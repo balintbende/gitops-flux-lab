@@ -19,11 +19,11 @@ variable "github_repository" {
   type        = string
 }
 
-variable "github_token" {
-  description = "GitHub PAT used to register the Flux deploy key and commit bootstrap manifests"
-  type        = string
-  sensitive   = true
-}
+# variable "github_token" {
+#   description = "GitHub PAT used to register the Flux deploy key and commit bootstrap manifests"
+#   type        = string
+#   sensitive   = true
+# }
 
 variable "kube_config" {
   description = "AKS kube_config object (from the kubernetes module) used to configure the flux provider"
@@ -33,6 +33,22 @@ variable "kube_config" {
 
 variable "ghcr_token" {
   description = "GitHub classic PAT with read:packages scope"
+  type        = string
+  sensitive   = true
+}
+
+variable "github_app_id" {
+  description = "The app id of the GitHub App"
+  type        = string
+}
+
+variable "github_app_installation_id" {
+  description = "The installation id of the GitHub App"
+  type        = string
+}
+
+variable "github_app_private_key" {
+  description = "The private key of the GitHub App."
   type        = string
   sensitive   = true
 }
