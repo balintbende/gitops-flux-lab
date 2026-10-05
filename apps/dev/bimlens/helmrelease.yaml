@@ -31,3 +31,8 @@ spec:
       replicas: 1
       host: ""
       serviceName: "api-dev"
+    web:
+      image: ghcr.io/balintbende/bimlens/api:develop-23cddc4-1790071054 # {"$imagepolicy": "flux-system:web-dev-image-policy"}
+      replicas: 1
+      host: ""
+      serviceName: "web-dev"
