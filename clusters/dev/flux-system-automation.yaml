@@ -12,7 +12,7 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: bimlens-flux-repository-dev
+    name: flux-system
   git:
     checkout:
       ref:
