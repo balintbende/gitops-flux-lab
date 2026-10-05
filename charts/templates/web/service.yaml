@@ -13,7 +13,7 @@ spec:
     - port: {{ .Values.web.port }}
       targetPort: 8080
       protocol: TCP
-      name: "public-api"
+      name: "public-web"
   selector:
     app.kubernetes.io/name: {{ .Values.web.serviceName }}
     app.kubernetes.io/instance: {{ .Values.web.serviceName }}
