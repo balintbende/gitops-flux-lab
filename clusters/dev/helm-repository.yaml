@@ -9,7 +9,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/balintbende/bimlens-helm-charts.git
+  url: https://github.com/balintbende/gitops-flux-lab.git
   ref:
     branch: develop
   secretRef:
