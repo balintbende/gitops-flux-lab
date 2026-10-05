@@ -25,8 +25,10 @@ spec:
     spec:
       nodeSelector:
         node-group-profile: {{ .Values.web.nodeGroupProfile }}
+      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        - name: {{ .Values.imagePullSecrets }}
+        - name: {{ . }}
+      {{- end }}
       containers:
         - name: {{ .Values.web.serviceName }}
           image: {{ .Values.web.image }}

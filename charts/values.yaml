@@ -4,7 +4,8 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 3
 
-imagePullSecrets: "acr-pull-credentials"
+# Name of a dockerconfigjson Secret for private registries. Leave empty for public images.
+imagePullSecrets: ""
 
 image:
   pullPolicy: "IfNotPresent"
