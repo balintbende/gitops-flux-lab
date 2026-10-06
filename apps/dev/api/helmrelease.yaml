@@ -30,4 +30,9 @@ spec:
       image: ghcr.io/balintbende/bimlens-api:develop-a428bbd-1782484762 # {"$imagepolicy": "flux-system:api-dev-image-policy"}
       replicas: 1
       host: ""
-      serviceName: "api-dev"
+      serviceName: "api"
+    web:
+      image: ghcr.io/balintbende/bimlens/web:develop-23cddc4-1790071033 # {"$imagepolicy": "flux-system:web-dev-image-policy"}
+      replicas: 1
+      host: ""
+      serviceName: "web"
