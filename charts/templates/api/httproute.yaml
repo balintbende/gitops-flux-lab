@@ -19,7 +19,7 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /api
       backendRefs:
         - name: {{ .Values.api.serviceName }}
           port: {{ .Values.api.port }}
