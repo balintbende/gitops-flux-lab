@@ -70,6 +70,9 @@ web:
   # The host of the service, for which the ingress will be created.
   host: ""
 
+  # Container port
+  port: 3000
+
   # Resource limit for the pods
   resources:
     requests:

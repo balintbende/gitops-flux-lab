@@ -11,7 +11,7 @@ spec:
   interval: 1m
   url: ssh://git@github.com/balintbende/gitops-flux-lab.git
   ref:
-    branch: develop
+    branch: main
   secretRef:
     name: flux-system
   ignore: |
