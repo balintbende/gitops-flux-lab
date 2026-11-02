@@ -8,6 +8,8 @@ resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
   kubernetes_version                = "1.35.4"
   role_based_access_control_enabled = true
   sku_tier                          = "Free"
+  oidc_issuer_enabled               = true
+  workload_identity_enabled         = true
 
   key_vault_secrets_provider {
     secret_rotation_enabled = true

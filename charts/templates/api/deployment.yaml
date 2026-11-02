@@ -22,7 +22,13 @@ spec:
       labels:
         app.kubernetes.io/name: {{ .Values.api.serviceName }}
         app.kubernetes.io/instance: {{ .Values.api.serviceName }}
+        {{- if .Values.api.workloadIdentity.enabled }}
+        azure.workload.identity/use: "true"
+        {{- end }}
     spec:
+      {{- if .Values.api.workloadIdentity.enabled }}
+      serviceAccountName: {{ .Values.api.workloadIdentity.serviceAccountName }}
+      {{- end }}
       nodeSelector:
         node-group-profile: {{ .Values.api.nodeGroupProfile }}
       {{- with .Values.imagePullSecrets }}

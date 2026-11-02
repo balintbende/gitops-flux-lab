@@ -46,6 +46,25 @@ module "network" {
   azure_resource_group_name = azurerm_resource_group.resource-group.name
 }
 
+module "security" {
+  source                     = "./azure-security"
+  product                    = var.product
+  environment                = var.environment
+  azure_region               = var.azure_region
+  azure_resource_group_name  = azurerm_resource_group.resource-group.name
+  kubernetes_namespace_name  = kubernetes_namespace_v1.namespace.metadata[0].name
+  kubernetes_oidc_issuer_url = module.kubernetes.oidc_issuer_url
+  azure_storage_account_id   = module.datastore.azure_storage_account_id
+}
+
+module "datastore" {
+  source                    = "./azure-datastore"
+  product                   = var.product
+  environment               = var.environment
+  azure_region              = var.azure_region
+  azure_resource_group_name = azurerm_resource_group.resource-group.name
+}
+
 module "kubernetes" {
   source                          = "./azure-kubernetes"
   product                         = var.product

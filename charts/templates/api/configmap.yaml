@@ -4,3 +4,6 @@ metadata:
   name: {{ .Values.api.serviceName }}-configmap
 data:
   ASPNETCORE_ENVIRONMENT: "Development"
+  {{- with .Values.api.storage.serviceUri }}
+  Storage__ServiceUri: {{ . | quote }}
+  {{- end }}

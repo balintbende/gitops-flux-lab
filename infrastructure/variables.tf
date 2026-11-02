@@ -66,11 +66,11 @@ variable "github_repository" {
   type        = string
 }
 
-variable "github_token" {
-  description = "GitHub PAT used to register the Flux deploy key and commit bootstrap manifests"
-  type        = string
-  sensitive   = true
-}
+# variable "github_token" {
+#   description = "GitHub PAT used to register the Flux deploy key and commit bootstrap manifests"
+#   type        = string
+#   sensitive   = true
+# }
 
 variable "github_app_id" {
   description = "The app id of the GitHub App"

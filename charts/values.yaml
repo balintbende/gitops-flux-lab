@@ -52,6 +52,17 @@ api:
   # Container port
   port: 3000
 
+  # Azure workload identity. The service account is created by Terraform
+  # (infrastructure/api-identity.tf) and is bound to a managed identity.
+  workloadIdentity:
+    enabled: false
+    serviceAccountName: "api"
+
+  storage:
+    # Blob endpoint of the storage account, e.g. https://<account>.blob.core.windows.net
+    # Accessed with the workload identity, so no connection string is needed.
+    serviceUri: ""
+
 # Web frontend
 web:
   # The name of the service.

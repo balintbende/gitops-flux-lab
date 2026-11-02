@@ -31,6 +31,10 @@ spec:
       replicas: 1
       host: ""
       serviceName: "api"
+      workloadIdentity:
+        enabled: true
+      storage:
+        serviceUri: "https://stabimlensdev.blob.core.windows.net"
     web:
       image: ghcr.io/balintbende/bimlens/web:develop-23cddc4-1790071033 # {"$imagepolicy": "flux-system:web-dev-image-policy"}
       replicas: 1
