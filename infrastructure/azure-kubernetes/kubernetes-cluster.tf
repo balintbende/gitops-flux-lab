@@ -40,9 +40,9 @@ resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
     }
   }
 
-  service_principal {
-    client_id     = var.azure_client_id
-    client_secret = var.azure_client_secret
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [var.kubernetes_cluster_identity_id]
   }
 
   tags = {

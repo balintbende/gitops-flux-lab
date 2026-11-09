@@ -9,30 +9,6 @@ variable "environment" {
   type        = string
 }
 
-variable "azure_subscription_id" {
-  description = "The azure subscription id"
-  type        = string
-  sensitive   = true
-}
-
-variable "azure_client_id" {
-  description = "The azure client id"
-  type        = string
-  sensitive   = true
-}
-
-variable "azure_client_secret" {
-  description = "The azure client secret/password"
-  type        = string
-  sensitive   = true
-}
-
-variable "azure_tenant_id" {
-  description = "The azure tenant id"
-  type        = string
-  sensitive   = true
-}
-
 variable "azure_region" {
   description = "The dns_zones to be managed for this environment."
   type        = string

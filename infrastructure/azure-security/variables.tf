@@ -33,3 +33,8 @@ variable "azure_storage_account_id" {
   description = "The id of the storage account the api gets blob data access to."
   type        = string
 }
+
+variable "azure_virtual_network_subnet_id" {
+  description = "The id of the subnet the AKS cluster runs in. The cluster identity gets Network Contributor on it."
+  type        = string
+}
