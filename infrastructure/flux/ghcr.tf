@@ -32,7 +32,7 @@ resource "kubernetes_secret_v1" "ghcr_flux_system_config" {
 resource "kubernetes_secret_v1" "ghcr_app_config" {
   metadata {
     name      = "ghcr-credentials"
-    namespace = var.environment
+    namespace = var.kubernetes_namespace_name
   }
 
   type = "kubernetes.io/dockerconfigjson"

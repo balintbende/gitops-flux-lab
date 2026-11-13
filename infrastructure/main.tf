@@ -84,10 +84,11 @@ resource "kubernetes_namespace_v1" "namespace" {
 }
 
 module "flux" {
-  source       = "./flux"
-  product      = var.product
-  environment  = var.environment
-  github_owner = var.github_owner
+  source                    = "./flux"
+  product                   = var.product
+  environment               = var.environment
+  kubernetes_namespace_name = kubernetes_namespace_v1.namespace.metadata[0].name
+  github_owner              = var.github_owner
   # github_token      = var.github_token
   github_repository          = var.github_repository
   kube_config                = module.kubernetes.kube_config

@@ -9,6 +9,11 @@ variable "environment" {
   type        = string
 }
 
+variable "kubernetes_namespace_name" {
+  description = "The application namespace the GHCR pull secret is created in. Pass it from the namespace resource so the secret waits for it."
+  type        = string
+}
+
 variable "github_owner" {
   description = "The GitHub owner/org that holds the Flux GitOps repository"
   type        = string
